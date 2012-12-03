@@ -14,6 +14,11 @@
         <a href="#" {{action requeueJob target="view"}}>Rebuild</a>
       </li>
     {{/if}}
+    {{#if view.canRegenerateKey}}
+      <li>
+        <a href="#" name="regenerate-key" class="open-popup" {{action regenerateKeyPopup target="view"}}>Regenerate Key</a>
+      </li>
+    {{/if}}
   </ul>
 </div>
 
@@ -42,5 +47,29 @@
   <p>
     <label>{{t repositories.rdoc}}:</label>
     <input type="text" class="rdoc" {{bindAttr value="view.rdocStatusImage"}}></input>
+  </p>
+</div>
+
+<div id="regenerate-key" class="popup">
+  <a href="#" class="close" {{action popupClose target="view"}}></a>
+  <p>
+    Do you really want to regenerate ssl keys for this repository?
+  </p>
+
+  <p>
+    <a class="sync_now button" {{action regenerateKey target="view"}}>Yes! Do it!</a>
+    or
+    <a href="#" class="cancel" {{action popupClose target="view"}}>Cancel</a>
+  </p>
+</div>
+
+<div id="regeneration-success" class="popup">
+  <a href="#" class="close" {{action popupClose target="view"}}></a>
+  <p>
+    Key for this repository has been regenerated
+  </p>
+
+  <p>
+    Lorem ipsum, we need content here
   </p>
 </div>
